@@ -17,6 +17,7 @@ feature 'Starting a new game' do
   end
   scenario 'It prints my board' do
     visit '/board?name=Ana'
-    expect(page).to have_content 'here is your board:'
+    expect(page).to have_content 'A B C'
   end
+
 end
