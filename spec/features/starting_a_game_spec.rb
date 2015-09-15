@@ -1,9 +1,18 @@
 require 'spec_helper'
 
-feature 'Starting a new game' do 
-  scenario 'I am asked to enter my name' do 
+feature 'Starting a new game' do
+  scenario 'I am asked to enter my name' do
     visit '/'
     click_link 'New Game'
-    expect(page).to have_content "What's your name?"
+    fill_in('name', :with => 'Ana')
+    click_button 'Submit'
+    expect(current_url).to include 'name=Ana'
+  end
+  scenario 'I leave my name blank' do
+    visit '/'
+    click_link 'New Game'
+    fill_in('name', :with => '')
+    click_button 'Submit'
+    expect(page).to have_content 'YOU MUST GIVE A NAME'
   end
 end

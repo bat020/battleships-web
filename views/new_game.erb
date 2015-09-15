@@ -1,3 +1,10 @@
 <div>
-  What's your name?
+  <form action="/new_game">
+    What's your name?
+    <input type="text" name="name">
+    <input type="submit" value="Submit">
+  </form>
+  <% if @name == "" %>
+    YOU MUST GIVE A NAME
+  <% end %>
 </div>
