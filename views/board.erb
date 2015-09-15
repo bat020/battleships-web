@@ -1,0 +1,10 @@
+<div>
+  <% if @name == "" %>
+    <p>YOU MUST GIVE A NAME</p>
+
+    <p><a href="/new_game">try again</a></p>
+  <% else %>
+    <p>Hello <%= @name %>, here is your board:</p>
+    <%= @board %>
+  <% end %>
+</div>

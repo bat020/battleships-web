@@ -15,4 +15,8 @@ feature 'Starting a new game' do
     click_button 'Submit'
     expect(page).to have_content 'YOU MUST GIVE A NAME'
   end
+  scenario 'It prints my board' do
+    visit '/board?name=Ana'
+    expect(page).to have_content 'here is your board:'
+  end
 end
