@@ -1,16 +1,7 @@
-require_relative 'board'
-require_relative 'cell'
-require_relative 'water'
 
-class BoardPrinter
+module BoardPrinter
 
-  attr_reader :board
-
-  def initialize(board)
-    @board = board
-  end
-
-  def HTMLprint
+  def htmlprint
     letters = 'ABCDEFGHIJ'
     outstring = "<div style= 'font-family: monospace'><p>&nbsp;&nbsp;&nbsp;A B C D E F G H I J</p>"
     [*1..10].each do |row|
@@ -20,7 +11,20 @@ class BoardPrinter
       end
       [*0..9].each do |col|
         coord = (letters[col] + row.to_s).to_sym
-        rowstring << (self.board.grid[coord].hit? ? 'X&nbsp;' : '·&nbsp;')
+        # rowstring << (@grid[coord].hit? ? 'X&nbsp;' : '·&nbsp;')
+        if grid[coord].content.class == Water
+          if grid[coord].hit?
+            rowstring += "m "
+          else
+            rowstring += ". "
+          end
+        else
+          if grid[coord].hit?
+            rowstring += "x "
+          else
+            rowstring += "s "
+          end
+        end
       end
       rowstring = "<p>" + rowstring + "</p>"
       outstring << rowstring

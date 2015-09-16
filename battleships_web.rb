@@ -1,5 +1,11 @@
 require 'sinatra/base'
 require './lib/boardprinter'
+require_relative 'lib/water'
+require_relative 'lib/ship'
+require_relative 'lib/player'
+require_relative 'lib/game'
+require_relative 'lib/cell'
+require_relative 'lib/board'
 
 class BattleshipsWeb < Sinatra::Base
   get '/' do
@@ -13,7 +19,8 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/board' do
     @name = params[:name]
-    @board = BoardPrinter.new(Board.new(Cell)).HTMLprint
+    boarde = Board.new(Cell)
+    @board = boarde.htmlprint
     erb :board
   end
 
