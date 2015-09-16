@@ -5,14 +5,9 @@
   <% else %>
     <p>Hello <%= @name %>, here is your test board:</p>
     <%= @board_html %>
-    <form action="/board">
-      Coordinate (format 'A1'): <input type="text" name="coord">
-      Orientation:
-      <select name="orientation">
-        <option value="horizontal">Horizontal</option>
-        <option value="vertical">Vertial</option>
-      </select>
-      <input type="submit" value="Submit">
+    <form id="sh0tForm" action="/board">
+      Coordinate to shoot at (format 'A1'): <input type="text" name="coord">
+      <input type="submit" value="Shoot">
     </form>
   <% end %>
 </div>

@@ -24,6 +24,14 @@ end
 feature 'Lets you fire at the board' do
   scenario 'I\'m asked for coordinates' do
     visit '/board?name=Ana'
-    expect(page).to have_css 'div#sh0tForm'
+    expect(page).to have_css 'form#sh0tForm'
   end
+
+  scenario 'Remembers my name when I\'ve clicked Shoot.' do
+    visit '/board?name=Ana'
+    fill_in('coord', :with => 'A1')
+    click_button 'Shoot'
+    expect(page).to have_content 'Hello, Ana'
+  end
+
 end
