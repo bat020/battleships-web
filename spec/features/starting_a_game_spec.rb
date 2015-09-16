@@ -19,5 +19,11 @@ feature 'Starting a new game' do
     visit '/board?name=Ana'
     expect(page).to have_content 'A B C'
   end
+end
 
+feature 'Setting up a board' do
+  scenario 'I\'m told what ship to place.' do
+    visit '/board?name=Ana'
+    expect(page).to have_content 'Please place a ship of size'
+  end
 end

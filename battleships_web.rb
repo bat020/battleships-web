@@ -19,8 +19,12 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/board' do
     @name = params[:name]
-    boarde = Board.new(Cell)
-    @board = boarde.htmlprint
+    board1 = Board.new(Cell)
+    player1 = Player.new
+    player1.board = board1
+    player1.random_setup
+    @board_html = player1.board.htmlprint
+
     erb :board
   end
 

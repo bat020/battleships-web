@@ -5,6 +5,16 @@
     <p><a href="/new_game">try again</a></p>
   <% else %>
     <p>Hello <%= @name %>, here is your board:</p>
-    <%= @board %>
+    <%= @board_html %>
+    <p>Please place a ship of size 5</p>
+  <form action="/board">
+    Coordinate (format 'A1'): <input type="text" name="coord">
+    Orientation:
+    <select name="orientation">
+      <option value="horizontal">Horizontal</option>
+      <option value="vertical">Vertial</option>
+    </select>
+    <input type="submit" value="Submit">
+  </form>
   <% end %>
 </div>
