@@ -31,7 +31,14 @@ feature 'Lets you fire at the board' do
     visit '/board?name=Ana'
     fill_in('coord', :with => 'A1')
     click_button 'Shoot'
-    expect(page).to have_content 'Hello, Ana'
+    expect(page).to have_content 'Hello Ana'
+  end
+
+  scenario 'Udpates the board with shot location.' do
+    visit '/board?name=Ana'
+    fill_in('coord', :with => 'A1')
+    click_button 'Shoot'
+    expect(page.text).to match (/ 1 [mx]/)
   end
 
 end

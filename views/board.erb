@@ -6,7 +6,7 @@
     <p>Hello <%= @name %>, here is your test board:</p>
     <%= @board_html %>
     <form id="sh0tForm" action="/board">
-      Coordinate to shoot at (format 'A1'): <input type="text" name="coord">
+      Coordinate to shoot at (format 'A1'): <input type="text" name="coord" autofocus>
       <input type="submit" value="Shoot">
     </form>
   <% end %>

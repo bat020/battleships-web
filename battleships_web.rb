@@ -19,16 +19,25 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   get '/board' do
-    p params
-    p params[:name]
-    p session
     session[:name] = params[:name] unless (params[:name] == '' || params[:name] == nil)
-    @name = session[:name] #if session[:name] != ''
-    board1 = Board.new(Cell)
-    player1 = Player.new
-    player1.board = board1
-    player1.random_setup
-    @board_html = player1.board.htmlprint
+    @name = session[:name]
+    if session[:player1] == nil
+      board1 = Board.new(Cell)
+      player1 = Player.new
+      player1.board = board1
+      player1.random_setup
+      session[:player1] = player1
+    end
+    unless (params[:coord] == '' || params[:coord] == nil)
+      params[:coord].upcase!
+      begin
+        session[:player1].receive_shot(params[:coord].to_sym) # if params[:coord].index(/^[A-J](10|[1-9])$/)
+      rescue
+        nil
+      end
+    end
+    @board_html = session[:player1].board.htmlprint
+    # p session
     erb :board
   end
 
