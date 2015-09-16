@@ -1,5 +1,5 @@
 <div>
-  <% if @name == "" %>
+  <% if @name == "" || @name == nil %>
     <p>YOU MUST GIVE A NAME</p>
     <p><a href="/new_game">try again</a></p>
   <% else %>
