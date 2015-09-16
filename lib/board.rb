@@ -27,7 +27,6 @@ class Board
       end
       [*0..9].each do |col|
         coord = (letters[col] + row.to_s).to_sym
-        # rowstring << (@grid[coord].hit? ? 'X&nbsp;' : '·&nbsp;')
         if grid[coord].content.class == Water
           if grid[coord].hit?
             rowstring += "m "
