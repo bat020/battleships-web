@@ -17,13 +17,13 @@ feature 'Starting a new game' do
   end
   scenario 'It prints my board' do
     visit '/board?name=Ana'
-    expect(page).to have_content 'A B C'
+    expect(page).to have_css 'div#b0ard'
   end
 end
 
-feature 'Setting up a board' do
-  scenario 'I\'m told what ship to place.' do
+feature 'Lets you fire at the board' do
+  scenario 'I\'m asked for coordinates' do
     visit '/board?name=Ana'
-    expect(page).to have_content 'Please place a ship of size'
+    expect(page).to have_css 'div#sh0tForm'
   end
 end

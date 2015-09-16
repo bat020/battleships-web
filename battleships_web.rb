@@ -24,7 +24,6 @@ class BattleshipsWeb < Sinatra::Base
     player1.board = board1
     player1.random_setup
     @board_html = player1.board.htmlprint
-
     erb :board
   end
 

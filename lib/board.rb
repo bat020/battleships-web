@@ -19,7 +19,7 @@ class Board
 
 	def htmlprint
     letters = 'ABCDEFGHIJ'
-    outstring = "<div style= 'font-family: monospace'><p>&nbsp;&nbsp;&nbsp;A B C D E F G H I J</p>"
+    outstring = "<div id='b0ard' style='font-family: monospace'><p>&nbsp;&nbsp;&nbsp;A B C D E F G H I J</p>"
     [*1..10].each do |row|
       rowstring = row.to_s + '&nbsp;'
       if row < 10
@@ -37,7 +37,8 @@ class Board
           if grid[coord].hit?
             rowstring += "x "
           else
-            rowstring += "s "
+						rowstring += grid[coord].content.size.to_s + " "
+            # rowstring += "s "
           end
         end
       end
